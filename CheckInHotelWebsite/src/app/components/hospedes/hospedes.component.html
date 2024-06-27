@@ -18,6 +18,11 @@
           formControlName="documento"
           placeholder="xxx.xxx.xxx-xx"
         />
+        <mat-error
+          *ngIf="this.hospedeForm.controls['documento'].errors?.['serverError']"
+          >{{this.hospedeForm.controls['documento'].errors?.['serverError']}}</mat-error
+        >
+
         <mat-hint>Apenas CPF</mat-hint>
       </mat-form-field>
 

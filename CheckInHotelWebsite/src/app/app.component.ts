@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HospedesComponent } from './hospedes/hospedes.component';
+import { HospedesComponent } from './components/hospedes/hospedes.component';
 import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 
 @Component({
