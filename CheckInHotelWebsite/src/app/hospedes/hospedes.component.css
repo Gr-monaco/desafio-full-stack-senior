@@ -1,0 +1,21 @@
+.card-body{
+  margin: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  margin: 0 auto;
+}
+
+mat-form-field {
+  margin-top: 15px;
+  width: 100%;
+  max-width: 500px;
+}
+
+mat-card-footer{
+  display: flex;
+  justify-content: flex-start;
+}
