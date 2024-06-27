@@ -10,6 +10,7 @@ import { HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/commo
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HospedeModel } from '../../models/hospede.model';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-hospedes',
@@ -22,10 +23,14 @@ import { HospedeModel } from '../../models/hospede.model';
     MatButtonModule,
     MatCardModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
+    NgxMaskDirective
   ],
   templateUrl: './hospedes.component.html',
-  styleUrl: './hospedes.component.css'
+  styleUrl: './hospedes.component.css',
+  providers: [
+    provideNgxMask()
+  ]
 })
 export class HospedesComponent {
 

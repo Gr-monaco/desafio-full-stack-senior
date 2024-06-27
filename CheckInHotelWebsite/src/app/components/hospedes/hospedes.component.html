@@ -17,12 +17,12 @@
           type="text"
           formControlName="documento"
           placeholder="xxx.xxx.xxx-xx"
+          mask="000.000.000-00"
         />
         <mat-error
           *ngIf="this.hospedeForm.controls['documento'].errors?.['serverError']"
           >{{this.hospedeForm.controls['documento'].errors?.['serverError']}}</mat-error
         >
-
         <mat-hint>Apenas CPF</mat-hint>
       </mat-form-field>
 
@@ -34,6 +34,7 @@
           type="text"
           formControlName="telefone"
           placeholder="(xx) xxxxxx-xxxx"
+          mask="(00) 00000-0000 || (00) 0000-0000"
         />
       </mat-form-field>
 
