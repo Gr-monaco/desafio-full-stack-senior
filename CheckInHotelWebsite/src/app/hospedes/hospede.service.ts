@@ -9,7 +9,7 @@ export class HospedeService {
   //Não é o ideal isto aqui...
   //Ver como implementar variaveis globais
   //Não esqueça de pelo menos de apontar na porta padrão do postgres
-  baseURL: string = "http://localhost:3000/";
+  baseURL: string = "http://localhost:8080/";
 
   constructor(private http: HttpClient) { }
 
