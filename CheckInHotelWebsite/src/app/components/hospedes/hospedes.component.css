@@ -19,3 +19,17 @@ mat-card-footer{
   display: flex;
   justify-content: flex-start;
 }
+
+/*
+Referência muito boa:
+https://itnext.io/angular-material-handle-many-mat-error-s-in-the-same-mat-form-field-6234235cf365
+*/
+mat-form-field {
+  mat-error {
+      display: none !important;
+  }
+
+  mat-error:first-child {
+      display: block !important;
+  }
+}
