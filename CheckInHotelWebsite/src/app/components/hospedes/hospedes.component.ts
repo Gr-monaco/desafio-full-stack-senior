@@ -1,23 +1,21 @@
 import { Component } from '@angular/core';
-import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AbstractControl, FormControl, FormGroup, FormGroupDirective, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { HospedeService } from '../../services/hospede/hospede.service';
-import { HttpClientModule, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClientModule, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { HospedeModel } from '../../models/hospede.model';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import { cpf } from 'cpf-cnpj-validator';
+import { validaCPF } from '../../utils/cpf.utils';
 
 @Component({
   selector: 'app-hospedes',
   standalone: true,
   imports: [
-    MatSelectModule,
     MatInputModule, 
     MatFormFieldModule, 
     ReactiveFormsModule, 
@@ -40,7 +38,7 @@ export class HospedesComponent {
   
   hospedeForm: FormGroup = new FormGroup({
     nome: new FormControl('', Validators.required),
-    documento: new FormControl('', [Validators.required, this.validaCPF()]),
+    documento: new FormControl('', [Validators.required, validaCPF()]),
     telefone: new FormControl('', Validators.required)
   })
 
@@ -87,11 +85,4 @@ export class HospedesComponent {
     return this.hospedeForm.get('telefone');
   }
 
-  validaCPF(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      const cpfSemCaracteresEspeciais : string  = cpf.strip(control.value);
-      const cpfValido : boolean = cpf.isValid(cpfSemCaracteresEspeciais)
-      return !cpfValido ? { cpfInvalido: "CPF está inválido" } : null;
-    }
-  }
 }

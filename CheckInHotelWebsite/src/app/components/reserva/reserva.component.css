@@ -1,0 +1,35 @@
+mat-card {
+  margin: 15px;
+}
+
+mat-form-field {
+  margin-top: 15px;
+  width: 100%;
+  max-width: 500px;
+}
+
+mat-form-field {
+  margin-top: 15px;
+  width: 100%;
+  max-width: 500px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  margin: 0 auto;
+}
+
+mat-checkbox {
+  margin-bottom: 5px;
+}
+
+mat-form-field {
+  mat-error {
+      display: none !important;
+  }
+
+  mat-error:first-child {
+      display: block !important;
+  }
+}

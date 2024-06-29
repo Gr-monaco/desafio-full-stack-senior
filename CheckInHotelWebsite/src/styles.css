@@ -1,7 +1,9 @@
 
-
+/*
+Pequena gambi para permitir que o tab tenha fundo branco
+*/
 body {
-  background-color: var(--theme-color-primary, #2a0f3e)
+  background: linear-gradient(white 48px, #2a0f3e 48px)
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
