@@ -1,0 +1,62 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Lista de Hospedes</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <mat-paginator
+      #paginator
+      [length]="detalhesPaginacao.totalElements"
+      (page)="handlePageEvent($event)"
+      [pageSize]="5"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+
+    <table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let reserva">{{ reserva.hospede.nome }}</td>
+      </ng-container>
+      <ng-container matColumnDef="telefone">
+        <th mat-header-cell *matHeaderCellDef>Telefone</th>
+        <td mat-cell *matCellDef="let reserva">
+          {{ reserva.hospede.telefone }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="numeroQuarto">
+        <th mat-header-cell *matHeaderCellDef>Número do Quarto</th>
+        <td mat-cell *matCellDef="let reserva">
+          {{ reserva.numeroQuarto }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="checkin">
+        <th mat-header-cell *matHeaderCellDef>Check In</th>
+        <td mat-cell *matCellDef="let reserva">
+          <mat-checkbox
+            [disabled]="true"
+            [checked]="reserva.checkin"
+          ></mat-checkbox>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="checkout">
+        <th mat-header-cell *matHeaderCellDef>Check Out</th>
+        <td mat-cell *matCellDef="let reserva">
+          <mat-checkbox
+            [disabled]="true"
+            [checked]="reserva.checkout"
+          ></mat-checkbox>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="acao">
+        <th mat-header-cell *matHeaderCellDef>Ação</th>
+        <td mat-cell *matCellDef="let reserva">
+          <button mat-flat-button color="primary">Ver detalhes</button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="colunasParaExibir"></tr>
+      <tr mat-row *matRowDef="let rowData; columns: colunasParaExibir"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

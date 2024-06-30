@@ -1,7 +1,8 @@
 package com.senior.hotel.backend.repository;
 
-import com.senior.hotel.backend.model.Hospede;
 import com.senior.hotel.backend.model.Reserva;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;

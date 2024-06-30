@@ -9,8 +9,12 @@ import com.senior.hotel.backend.model.embeddable.DataEntradaSaida;
 import com.senior.hotel.backend.repository.HospedeRepository;
 import com.senior.hotel.backend.repository.ReservaRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +40,7 @@ public class ReservaServices {
         reserva.setDataEntradaSaida(dataEntradaSaida);
 
         reserva.setNecessitaEstacionamento(reservaDTO.isNecessitaEstacionamento());
-        
+
         Hospede hospede = hospedeRepository.findByDocumento(reservaDTO.getDocumentoHospede());
         reserva.setHospede(hospede);
 
@@ -66,5 +70,9 @@ public class ReservaServices {
             throw new DTOValidationException(errosValidacao);
         }
 
+    }
+
+    public Page<Reserva> getReservas(int page, int size){
+        return this.reservaRespository.findAll(PageRequest.of(page, size));
     }
 }

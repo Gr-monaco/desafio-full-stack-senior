@@ -33,3 +33,7 @@ mat-form-field {
       display: block !important;
   }
 }
+
+button {
+  margin-right: 15px;
+}

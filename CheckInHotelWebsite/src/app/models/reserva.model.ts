@@ -1,3 +1,5 @@
+import { HospedeModel } from "./hospede.model";
+
 class DataEntradaSaida {
   dataEntrada: Date
   dataSaida: Date
@@ -8,6 +10,7 @@ class DataEntradaSaida {
   }
 }
 
+/* Isso aqui não é o ideal vendo agora */
 export class ReservaModel {
   documentoHospede: string
   numeroQuarto: string
@@ -20,3 +23,23 @@ export class ReservaModel {
   }
 }
 
+export class ReservaCompletaModel {
+  checkIn: boolean
+  checkOut: boolean
+  dataEntradaSaida: DataEntradaSaida
+  hospede: HospedeModel
+  necessitaEstacionamento: boolean
+  numeroQuarto: number
+
+  constructor(checkIn: boolean, checkOut: boolean, dataEntradaSaida: DataEntradaSaida, hospede: HospedeModel,
+    necessitaEstacionamento: boolean, numeroQuarto: number){
+      this.checkIn = checkIn
+      this.checkOut = checkOut
+      this.dataEntradaSaida = dataEntradaSaida
+      this.hospede = hospede
+      this.necessitaEstacionamento = necessitaEstacionamento
+      this.numeroQuarto = numeroQuarto
+
+    }
+
+}

@@ -8,11 +8,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ReservaService } from '../../services/reserva/reserva.service';
 import { ReservaModel } from '../../models/reserva.model';
 import { validaCPF } from '../../utils/cpf.utils';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-reserva',
@@ -33,7 +34,8 @@ import { CommonModule } from '@angular/common';
     MatSelectModule,
     NgxMaskDirective,
     MatCheckboxModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './reserva.component.html',
   styleUrl: './reserva.component.css'
