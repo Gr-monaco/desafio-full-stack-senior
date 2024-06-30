@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface HospedeRepository extends PagingAndSortingRepository<Hospede, Long>, CrudRepository<Hospede, Long> {
 
     boolean existsHospedeByDocumento(String documento);
+
+    Hospede findByDocumento(String documento);
 }
