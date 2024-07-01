@@ -12,10 +12,10 @@ Coloque, respectivamente, nas chaves **spring.datasource.username** e
 o usuário e senha do banco de dados.
 
 Após isto, abra o projeto usando uma IDE, deixe o maven instalar as dependências e inicialize o projeto. **Não esqueça de ligar o banco de dados**
+**O Banco de Dados deve ser PostgreSQL**
 
 Caso tenha problemas com a inicialização de dados inicias, delete o arquivo **data.sql** em \backend\src\main\resources
 e em application.properties tire a chave spring.sql.init.mode=always
-
 
 ## 2. Frontend
 Na pasta \CheckInHotelWebsite, abra um terminal e digite o comando **npm install** para baixar as dependências do projeto frontend. Após isto,
