@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef } from '@angular/core';
 import { PageEvent, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { ReservaService } from '../../services/reserva/reserva.service';
-import { ReservaCompletaModel, ReservaModel } from '../../models/reserva.model';
+import { ReservaCompletaModel } from '../../models/reserva.model';
 import { NgFor } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
@@ -10,6 +10,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { Pageable } from '../../models/pageable.model';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { RouterModule } from '@angular/router';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-listagem-reservas',
@@ -22,8 +25,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatListModule,
     MatTableModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    RouterModule,
+    MatNativeDateModule 
   ],
+  providers: [MatDatepickerModule],
   templateUrl: './listagem-reservas.component.html',
   styleUrl: './listagem-reservas.component.css'
 })
@@ -48,9 +54,6 @@ export class ListagemReservasComponent {
   
   handlePageEvent(event: PageEvent){
     this.atualizaReservas(event.pageIndex, event.pageSize)
-
-    this.changeDetection.detectChanges();
-
   }
 
   atualizaReservas(indexPagina: number, tamanhoPagina: number){

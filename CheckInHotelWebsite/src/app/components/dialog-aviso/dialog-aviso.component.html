@@ -1,0 +1,30 @@
+<h2>Aviso!</h2>
+<mat-dialog-content>
+  <p>{{ data.mensagem }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    *ngIf="data.aviso"
+    mat-flat-button
+    color="primary"
+    (click)="prosseguir(true)"
+  >
+    Ok
+  </button>
+  <button
+    *ngIf="!data.aviso"
+    mat-flat-button
+    color="primary"
+    (click)="prosseguir(true)"
+  >
+    Prosseguir
+  </button>
+  <button
+    *ngIf="!data.aviso"
+    mat-flat-button
+    color="warm"
+    (click)="prosseguir(false)"
+  >
+    Cancelar
+  </button>
+</mat-dialog-actions>

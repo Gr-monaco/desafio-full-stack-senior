@@ -1,5 +1,6 @@
 mat-card {
   margin: 15px;
+  margin-top: 55px;
 }
 
 form {
@@ -18,4 +19,8 @@ mat-form-field {
 mat-card-footer{
   display: flex;
   justify-content: flex-start;
+}
+
+mat-checkbox {
+  margin-right: 15px;
 }

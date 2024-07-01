@@ -1,0 +1,79 @@
+<mat-card appearance="outlined">
+  <div>
+    <a
+      class="button-voltar-listagem"
+      mat-flat-button
+      color="primary"
+      routerLink="/listaReservas"
+      >Voltar para Listagem</a
+    >
+  </div>
+
+  <mat-card-header>
+    <mat-card-title>Detalhes de Reserva</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="reservaForm">
+      <mat-form-field class="form">
+        <mat-label for="nome">Pessoa</mat-label>
+        <input matInput id="nome" type="text" formControlName="nomeHospede" />
+      </mat-form-field>
+      <mat-form-field class="form">
+        <mat-label for="numeroQuarto">Número do Quarto</mat-label>
+        <input
+          matInput
+          id="numeroQuarto"
+          type="text"
+          formControlName="numeroQuarto"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Selecione as Datas de Entrada e Saida</mat-label>
+        <mat-date-range-input
+          [formGroup]="getDataEntradaSaida"
+          [rangePicker]="picker"
+        >
+          <input
+            matStartDate
+            formControlName="dataEntrada"
+            placeholder="Entrada"
+          />
+          <input matEndDate formControlName="dataSaida" placeholder="Saida" />
+        </mat-date-range-input>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+      <mat-checkbox formControlName="necessitaEstacionamento"
+        >Necessita Estacionamento?</mat-checkbox
+      >
+      <div>
+        <mat-checkbox formControlName="checkIn">Fez Check In? </mat-checkbox>
+        <button
+          *ngIf="!reservaForm.get('checkIn')?.value"
+          mat-flat-button
+          color="primary"
+          (click)="realizaCheckIn()"
+        >
+          Realizar Check In
+        </button>
+      </div>
+      <div>
+        <mat-checkbox formControlName="checkOut">Fez Check Out? </mat-checkbox>
+        <button
+          *ngIf="
+            reservaForm.get('checkIn')?.value &&
+            !reservaForm.get('checkOut')?.value
+          "
+          mat-flat-button
+          color="primary"
+          (click)="realizaCheckOut()"
+        >
+          Realizar Check Out
+        </button>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
