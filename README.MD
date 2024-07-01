@@ -13,10 +13,13 @@ o usuário e senha do banco de dados.
 
 Após isto, abra o projeto usando uma IDE, deixe o maven instalar as dependências e inicialize o projeto. **Não esqueça de ligar o banco de dados**
 
+<<<<<<< HEAD
 Caso tenha problemas com a inicialização de dados inicias, delete o arquivo **data.sql** em \backend\src\main\resources
 e em application.properties tire a chave spring.sql.init.mode=always
 
 
+=======
+>>>>>>> 4df6416a918bf78592bd71e9ec718657495d6ada
 ## 2. Frontend
 Na pasta \CheckInHotelWebsite, abra um terminal e digite o comando **npm install** para baixar as dependências do projeto frontend. Após isto,
 digite o comando **ng serve**. O projeto irá subir na porta 8080.
