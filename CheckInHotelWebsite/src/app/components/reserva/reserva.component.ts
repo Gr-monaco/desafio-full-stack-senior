@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MAT_DATE_LOCALE, provideNativeDateAdapter } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -35,7 +35,7 @@ import { RouterModule } from '@angular/router';
     NgxMaskDirective,
     MatCheckboxModule,
     CommonModule,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './reserva.component.html',
   styleUrl: './reserva.component.css'
@@ -66,7 +66,10 @@ export class ReservaComponent {
   return this.reservaForm.get('documentoHospede');
   }
 
-  onSubmit(){
-    this.reservaService.cadastraReserva(this.reservaForm.value as ReservaModel).subscribe()
+  onSubmit(formDirective: FormGroupDirective){
+    this.reservaService.cadastraReserva(this.reservaForm.value as ReservaModel).subscribe({complete: () =>{
+      this.reservaForm.reset()
+      formDirective.resetForm();
+    }})
   }
 }

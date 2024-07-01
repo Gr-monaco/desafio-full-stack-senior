@@ -58,7 +58,6 @@ export class DetalhesReservaComponent {
  * Novamente,o ideal seria implementar um Route Guard.
  */
   ngOnInit(){
-    console.log(this.route.snapshot.queryParamMap)
     //Não é o ideal também, pode dar erro
     this.idReserva = Number(this.route.snapshot.queryParamMap.get('id'));
     this.reservaService.buscaReserva(this.idReserva).subscribe({next: (reserva) => {
@@ -80,7 +79,7 @@ export class DetalhesReservaComponent {
   realizaCheckIn(): void{
     const now = new Date();
 
-    const passouHorario = now.getHours() >= 21; //seria legal colocar como constante de ambiente
+    const passouHorario = now.getHours() >= 14; //seria legal colocar como constante de ambiente
 
     if(!passouHorario){
       let mensagemDialog :String = "O horarío de CheckIn está adiantado.Deseja prosseguir?" 
@@ -116,14 +115,13 @@ export class DetalhesReservaComponent {
         {data: {mensagem: mensagemDialog, aviso:true}})
         dialogRef.afterClosed().subscribe(resultado => {
           this.efetuaCheckOut(aplicarMulta)
-      })    }else{
+      })}else{
         this.efetuaCheckOut(aplicarMulta)
 
       }
   }
 
   efetuaCheckOut(aplicarMulta: boolean): void{
-    let valorDiaria: number = 0;
     this.reservaService.realizaCalculoDiarias(this.idReserva, aplicarMulta).subscribe({next: (res) => {
       let mensagemDialog :String = "Valor a ser pago: " + res.toLocaleString('pt-br', {style: 'currency', currency:'BRL'})
       const dialogRef = this.dialog.open(DialogAvisoComponent, 

@@ -61,11 +61,9 @@ export class ListagemReservasComponent {
       /**
        * TODO: Tratamento de erros...
        */
-      console.log("Erro ao buscar reservas");
     }, next: (v) => {
        this.reservas = v.content
        this.detalhesPaginacao = v.page
-       console.log(v)
        this.changeDetection.detectChanges();
     }})
   }
